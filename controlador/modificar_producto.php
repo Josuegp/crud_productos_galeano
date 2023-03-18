@@ -8,7 +8,14 @@ if (!empty($_POST["btnregistrar"])) {
         $valor = $_POST["valor"];
         $descripcion = $_POST["descripcion"];
         $categoria = $_POST["categoria"];
-        $sql=$conexion->query(" update productos_crud set nombre='$nombre', nstock='$stock', valor='$valor', descripcion='$descripcion', categoria='$categoria' where id = '$id')");
+        $sql=$conexion->query(" update productos_crud set nombre='$nombre', nstock='$stock', valor='$valor', descripcion='$descripcion', categoria='$categoria' where id = $id");
+        if ($sql==1) {
+            header("location:index.php");
+
+        }else{
+            echo "<div class='alert alert-danger'>Error al modificar producto</div>";
+
+        }
 
     } else {
         echo "<div class='alert alert-warning'>campos vacios</div>";

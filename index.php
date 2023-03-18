@@ -12,7 +12,21 @@
 </head>
 
 <body>
+    <script>
+        function eliminar(){
+            var respuesta=confirm("Estás seguro de eliminar?");
+            return respuesta
+        }
+    </script>
+
     <h1 class="text-center p-3">CRUD productos Josue Galeano</h1>
+    <?php
+    include "modelo/conexion.php";
+    include "controlador/eliminar_producto.php";
+
+    ?>
+
+
     <div class="container-fluid row">
 
         <!-- Aqui esta el codigo del formulario -->
@@ -22,7 +36,7 @@
             <h3 class="text-center text-secondary">Registro de productos</h3>
 
             <?php
-            include "modelo/conexion.php";
+            
             include "controlador/registro_producto.php";
 
             ?>
@@ -86,7 +100,7 @@
                             <td><?= $datos->categoria ?></td>
                             <td>
                                 <a href="modificar_producto.php?id=<?= $datos->id ?>" class="btn btn-small btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="" class="btn btn-small btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                                <a onclick="return eliminar()" href="index.php?id=<?= $datos->id?>" class="btn btn-small btn-danger"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
 
                         </tr>
